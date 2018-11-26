@@ -33,7 +33,7 @@
     self = [super init];
     if (self)
     {
-        [MXSDKOptions sharedInstance].applicationGroupIdentifier = @"group.im.vector";
+        [MXSDKOptions sharedInstance].applicationGroupIdentifier = @"com.vertex.FairWallet";
 
         // NSLog -> console.log file when not debugging the app
         if (!isatty(STDERR_FILENO))
