@@ -48,6 +48,7 @@ UIColor *kRiotColorIndigo;
 UIColor *kRiotColorOrange;
 UIColor *kRiotColorBlue;
 UIColor *kRiotColorCuriousBlue;
+UIColor *kRiotColorBlackNew;
 
 // Riot Background Colors
 UIColor *kRiotBgColorWhite;
@@ -61,6 +62,8 @@ UIColor *kRiotColorDarkKeyboard;
 //Riot Fair Wallet
 UIColor *kRiotBGColorWallet;
 UIColor *kRiotColorLightBlue;
+UIColor *kRiotColorBlackLight;
+UIColor *kRiotColorNewGreen;
 
 // Riot Text Colors
 UIColor *kRiotTextColorBlack;
@@ -99,7 +102,7 @@ UIKeyboardAppearance kRiotKeyboard;
     // Load colors at the app load time for the life of the app
 
     // Colors as defined by the design
-    kRiotColorGreen = UIColorFromRGB(0x62CE9C);
+    kRiotColorGreen = UIColorFromRGB(0x42f492);
     kRiotColorSilver = UIColorFromRGB(0xC7C7CC);
     kRiotColorPinkRed = UIColorFromRGB(0xFF0064);
     kRiotColorRed = UIColorFromRGB(0xFF4444);
@@ -107,9 +110,13 @@ UIKeyboardAppearance kRiotKeyboard;
     kRiotColorOrange = UIColorFromRGB(0xF8A15F);
     kRiotColorBlue = UIColorFromRGB(0x81BDDB);
     kRiotColorCuriousBlue = UIColorFromRGB(0x2A9EDB);
+    kRiotColorBlackNew = UIColorFromRGB(0x2E2D3D);
 
+    
     kRiotBGColorWallet = UIColorFromRGB(0x2E2D3D);
     kRiotColorLightBlue = UIColorFromRGB(0x59D4DB);
+    kRiotColorBlackLight = UIColorFromRGB(0x2E2D3D);
+    kRiotColorNewGreen = UIColorFromRGB(0x42f492);
     
     kRiotBgColorWhite = [UIColor whiteColor];
     kRiotBgColorBlack = UIColorFromRGB(0x2D2D2D);
