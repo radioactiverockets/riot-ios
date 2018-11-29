@@ -3730,7 +3730,7 @@ typedef void (^blockSettingsViewController_onReadyToDestroy)();
 {
     __weak typeof(self) weakSelf = self;
 
-    __block UIAlertAction *autoAction, *lightAction, *darkAction, *blackAction;
+    __block UIAlertAction *autoAction, *lightAction, *darkAction, *blackAction, *fairAction;
     NSString *themePickerMessage;
 
     void (^actionBlock)(UIAlertAction *action) = ^(UIAlertAction * action) {
@@ -3755,6 +3755,10 @@ typedef void (^blockSettingsViewController_onReadyToDestroy)();
             else if (action == blackAction)
             {
                 newTheme = @"black";
+            }
+            else if (action == fairAction)
+            {
+                newTheme = @"fair";
             }
 
             NSString *theme = RiotSettings.shared.userInterfaceTheme;
@@ -3792,6 +3796,9 @@ typedef void (^blockSettingsViewController_onReadyToDestroy)();
     blackAction = [UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"settings_ui_theme_black", @"Vector", nil)
                                           style:UIAlertActionStyleDefault
                                         handler:actionBlock];
+    fairAction = [UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"settings_ui_theme_fair", @"Vector", nil)
+                                           style:UIAlertActionStyleDefault
+                                         handler:actionBlock];
 
 
     UIAlertController *themePicker = [UIAlertController alertControllerWithTitle:NSLocalizedStringFromTable(@"settings_ui_theme_picker_title", @"Vector", nil)
@@ -3805,6 +3812,7 @@ typedef void (^blockSettingsViewController_onReadyToDestroy)();
     [themePicker addAction:lightAction];
     [themePicker addAction:darkAction];
     [themePicker addAction:blackAction];
+    [themePicker addAction:fairAction];
 
     // Cancel button
     [themePicker addAction:[UIAlertAction actionWithTitle:[NSBundle mxk_localizedStringForKey:@"cancel"]

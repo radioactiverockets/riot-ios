@@ -102,7 +102,7 @@ UIKeyboardAppearance kRiotKeyboard;
     // Load colors at the app load time for the life of the app
 
     // Colors as defined by the design
-    kRiotColorGreen = UIColorFromRGB(0x42f492);
+    kRiotColorGreen = UIColorFromRGB(0x62CE9C);
     kRiotColorSilver = UIColorFromRGB(0xC7C7CC);
     kRiotColorPinkRed = UIColorFromRGB(0xFF0064);
     kRiotColorRed = UIColorFromRGB(0xFF4444);
@@ -218,9 +218,8 @@ UIKeyboardAppearance kRiotKeyboard;
         [UITextField appearance].keyboardAppearance = UIKeyboardAppearanceDark;
         kRiotKeyboard = UIKeyboardAppearanceDark;
     }
-    else
+    else if ([theme isEqualToString:@"fair"])
     {
-        // Set light theme colors by default.
         kRiotPrimaryBgColor = kRiotBGColorWallet;
         kRiotSecondaryBgColor = kRiotColorLightBlack;
         kRiotPrimaryTextColor = kRiotTextColorWhite;
@@ -229,41 +228,45 @@ UIKeyboardAppearance kRiotKeyboard;
         kRiotTopicTextColor = kRiotTextColorDarkWhite;
         kRiotSelectedBgColor = [UIColor blackColor];
         
-        /*kRiotSecondaryBgColor = kRiotColorLightGrey;
-         kRiotPrimaryTextColor = kRiotTextColorBlack;
-         kRiotSecondaryTextColor = kRiotTextColorGray;
-         kRiotPlaceholderTextColor = nil; // Use default 70% gray color.
-         kRiotTopicTextColor = kRiotTextColorDarkGray;
-         kRiotSelectedBgColor = nil; // Use the default selection color.
-         */
-        
         kRiotDesignStatusBarStyle = UIStatusBarStyleLightContent;
         kRiotDesignSearchBarStyle = UIBarStyleBlack;
         kRiotDesignSearchBarTintColor = kRiotColorGreen;
-        
-        /*
-         kRiotDesignStatusBarStyle = UIStatusBarStyleDefault;
-         kRiotDesignSearchBarStyle = UIBarStyleDefault;
-         kRiotDesignSearchBarTintColor = nil; // Default tint color.
-         */
         
         kRiotAuxiliaryColor = kRiotTextColorGray;
         kRiotOverlayColor = [UIColor colorWithWhite:0.3 alpha:0.5];
         kRiotKeyboardColor = kRiotColorDarkKeyboard;
         
-        /*
-         kRiotAuxiliaryColor = kRiotColorSilver;
-         kRiotOverlayColor = [UIColor colorWithWhite:0.7 alpha:0.5];
-         kRiotKeyboardColor = kRiotColorLightKeyboard;
-         */
+        kRiotAuxiliaryColor = kRiotTextColorGray;
+        kRiotOverlayColor = [UIColor colorWithWhite:0.3 alpha:0.5];
+        kRiotKeyboardColor = kRiotColorDarkKeyboard;
         
-        [UITextField appearance].keyboardAppearance = UIKeyboardAppearanceDark;
-        kRiotKeyboard = UIKeyboardAppearanceDark;
+        [UITextField appearance].keyboardAppearance = UIKeyboardAppearanceLight;
+        kRiotKeyboard = UIKeyboardAppearanceLight;
+    }
+    else
+    {
+        // Set light theme colors by default.
         
-        /*
-         [UITextField appearance].keyboardAppearance = UIKeyboardAppearanceLight;
-         kRiotKeyboard = UIKeyboardAppearanceLight;
-         */
+        kRiotPrimaryBgColor = kRiotBgColorWhite;
+        kRiotSecondaryBgColor = kRiotColorLightGrey;
+        kRiotPrimaryTextColor = kRiotTextColorBlack;
+        kRiotSecondaryTextColor = kRiotTextColorGray;
+        kRiotPlaceholderTextColor = nil; // Use default 70% gray color.
+        kRiotTopicTextColor = kRiotTextColorDarkGray;
+        kRiotSelectedBgColor = nil; // Use the default selection color.
+        
+        kRiotDesignStatusBarStyle = UIStatusBarStyleDefault;
+        kRiotDesignSearchBarStyle = UIBarStyleDefault;
+        kRiotDesignSearchBarTintColor = nil; // Default tint color.
+        
+        kRiotAuxiliaryColor = kRiotColorSilver;
+        kRiotOverlayColor = [UIColor colorWithWhite:0.7 alpha:0.5];
+        kRiotKeyboardColor = kRiotColorLightKeyboard;
+        
+        
+        [UITextField appearance].keyboardAppearance = UIKeyboardAppearanceLight;
+        kRiotKeyboard = UIKeyboardAppearanceLight;
+        
     }
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kRiotDesignValuesDidChangeThemeNotification object:nil];
