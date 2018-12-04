@@ -238,7 +238,7 @@ NSString *const kAppDelegateNetworkStatusDidChangeNotification = @"kAppDelegateN
 
     // Set the App Group identifier.
     MXSDKOptions *sdkOptions = [MXSDKOptions sharedInstance];
-    sdkOptions.applicationGroupIdentifier = @"com.vertex.FairWallet";
+    sdkOptions.applicationGroupIdentifier = @"group.vertex.FairWallet";
 
     // Redirect NSLogs to files only if we are not debugging
     if (!isatty(STDERR_FILENO))

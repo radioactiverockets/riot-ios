@@ -16,7 +16,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>com.vertex.FairWallet</string>
+		<string>group.vertex.FairWallet</string>
 	</array>
 </dict>
 </plist>
