@@ -28,7 +28,7 @@ NSString *const kJavascriptSendResponseToPostMessageAPI = @"riotIOS.sendResponse
 
 @implementation WidgetViewController
 @synthesize widget;
-
+ 
 - (instancetype)initWithUrl:(NSString*)widgetUrl forWidget:(Widget*)theWidget
 {
     self = [super initWithURL:widgetUrl];

@@ -74,8 +74,11 @@
                                    WidgetViewController *widgetVC = [[WidgetViewController alloc] initWithUrl:widgetUrl forWidget:widget];
 
                                    widgetVC.roomDataSource = roomDataSource;
+                                   RoomViewController* roomViewController = (RoomViewController *)mxkViewController;
+                                   [roomViewController.widgetHostView addSubview:widgetVC.view];
+//                                   [widgetVC presentViewController:add animated:YES completion:nil];
 
-                                   [mxkViewController.navigationController pushViewController:widgetVC animated:YES];
+//                                   [mxkViewController.navigationController pushViewController:widgetVC animated:YES];
 
                                } failure:^(NSError * _Nonnull error) {
 

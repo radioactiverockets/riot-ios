@@ -27,7 +27,10 @@
 
 #import "UIViewController+RiotSearch.h"
 
+@class WidgetViewController;
+
 @interface RoomViewController : MXKRoomViewController
+@property (strong, nonatomic) IBOutlet UIView *widgetHostView;
 
 // The expanded header
 @property (weak, nonatomic) IBOutlet UIView *expandedHeaderContainer;
@@ -43,6 +46,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *jumpToLastUnreadButton;
 @property (weak, nonatomic) IBOutlet UILabel *jumpToLastUnreadLabel;
 @property (weak, nonatomic) IBOutlet UIButton *resetReadMarkerButton;
+
+@property (nonatomic) WidgetViewController* widgetViewController;
 
 /**
  Force the display of the expanded header.

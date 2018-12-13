@@ -414,6 +414,54 @@
         
     }];
     [self userInterfaceThemeDidChange];
+    
+    self.widgetHostView.backgroundColor = [UIColor blueColor];
+    
+    self.widgetViewController = NULL;
+    
+//    MXKRoomDataSourceManager *roomDataSourceManager = [MXKRoomDataSourceManager sharedManagerForMatrixSession:self.roomDataSource.mxSession];
+//    [roomDataSourceManager roomDataSourceForRoom:self.roomDataSource.roomId create:NO onComplete:^(MXKRoomDataSource *roomDataSource) {
+//
+//        NSArray<Widget*> *widgets = [[WidgetManager sharedManager] widgetsNotOfTypes:@[kWidgetTypeJitsi]
+//                                                                              inRoom:roomDataSource.room
+//                                                                       withRoomState:roomDataSource.roomState];
+//
+//        // List widgets
+//        for (Widget *widget in widgets)
+//        {
+//            NSLog(@"[RoomVC] FOUND widget %@", widget);
+//        }
+//    }];
+    
+    Widget *widget = [[WidgetManager sharedManager] userWidgets:self.roomDataSource.mxSession ofTypes:nil].firstObject;
+
+    if (widget)
+    {
+        NSLog(@"[RoomVC] FOUND widget %@", widget);
+//        // Display the widget
+//        [widget widgetUrl:^(NSString * _Nonnull widgetUrl) {
+//
+//            StickerPickerViewController *stickerPickerVC = [[StickerPickerViewController alloc] initWithUrl:widgetUrl forWidget:widget];
+//
+//            stickerPickerVC.roomDataSource = self.roomDataSource;
+//
+//            [self.navigationController pushViewController:stickerPickerVC animated:YES];
+//        } failure:^(NSError * _Nonnull error) {
+//
+//            NSLog(@"[RoomVC] Cannot display widget %@", widget);
+//            [[AppDelegate theDelegate] showErrorAsAlert:error];
+//        }];
+    }
+    
+    
+//    @interface WidgetViewController ()
+//
+//    @end
+//
+//    @implementation WidgetViewController
+//    @synthesize widget;
+//
+//    - (instancetype)initWithUrl:(NSString*)widgetUrl forWidget:(Widget*)theWidget
 }
 
 - (void)userInterfaceThemeDidChange
