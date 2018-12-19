@@ -30,6 +30,8 @@
 @class WidgetViewController;
 
 @interface RoomViewController : MXKRoomViewController
+@property (strong, nonatomic) IBOutlet UIButton *fullScreenWidgetButton;
+@property (strong, nonatomic) IBOutlet UIWebView *widgetWebView;
 @property (strong, nonatomic) IBOutlet UIView *widgetHostView;
 
 // The expanded header
@@ -81,6 +83,7 @@
  Action used to handle some buttons.
  */
 - (IBAction)onButtonPressed:(id)sender;
+- (IBAction)onButtonPressedFullScreen:(UIButton *)sender;
 
 @end
 

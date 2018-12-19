@@ -16,6 +16,7 @@
                 <outlet property="bubblesTableViewTopConstraint" destination="X14-4s-uGM" id="Hic-6h-N05"/>
                 <outlet property="expandedHeaderContainer" destination="uK2-9a-rZj" id="0lY-NB-cR1"/>
                 <outlet property="expandedHeaderContainerHeightConstraint" destination="w9z-HS-7wJ" id="6uK-Bn-TcU"/>
+                <outlet property="fullScreenWidgetButton" destination="W67-Ve-Stf" id="LNj-ht-Z9F"/>
                 <outlet property="jumpToLastUnreadBannerContainer" destination="S6r-bo-jxw" id="Ady-Eh-4E0"/>
                 <outlet property="jumpToLastUnreadBannerContainerTopConstraint" destination="xYa-gT-4x0" id="jnh-3C-bQB"/>
                 <outlet property="jumpToLastUnreadButton" destination="ISb-UT-u0O" id="fs0-sQ-lRe"/>
@@ -30,6 +31,7 @@
                 <outlet property="roomInputToolbarContainerHeightConstraint" destination="5eD-Fm-RDb" id="6ny-5w-1UA"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ieV-u7-rXU"/>
                 <outlet property="widgetHostView" destination="Kg9-lJ-Grl" id="Ci2-Ef-B0o"/>
+                <outlet property="widgetWebView" destination="bLO-lh-MEJ" id="X88-bA-4cX"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -44,10 +46,10 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="accessibilityIdentifier" value="RoomVCBubblesTableView"/>
                     </userDefinedRuntimeAttributes>
                 </tableView>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kg9-lJ-Grl" userLabel="Widget Host View">
-                    <rect key="frame" x="0.0" y="52" width="375" height="316"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kg9-lJ-Grl" userLabel="Widget Host View">
+                    <rect key="frame" x="0.0" y="52" width="375" height="296"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" red="0.98889593909999995" green="0.14393388709999999" blue="0.061795129140000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.98889593909999995" green="0.14393388709999999" blue="0.061795129140000002" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uK2-9a-rZj" userLabel="Expanded Header Container" customClass="ExpandedRoomTitleView">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="215"/>
@@ -151,9 +153,19 @@
                         <constraint firstAttribute="height" constant="41" id="5eD-Fm-RDb"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W67-Ve-Stf" userLabel="Full Screen">
+                    <rect key="frame" x="279" y="356" width="96" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Full Screen"/>
+                    <connections>
+                        <action selector="onButtonPressedFullScreen:" destination="-1" eventType="touchUpInside" id="hHr-OC-M4y"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <accessibility key="accessibilityConfiguration" identifier="RoomVCView"/>
+            <accessibility key="accessibilityConfiguration" identifier="RoomVCView">
+                <accessibilityTraits key="traits" allowsDirectInteraction="YES"/>
+            </accessibility>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="BGD-sd-SQR" secondAttribute="trailing" id="0la-ok-MBr"/>
                 <constraint firstItem="S6r-bo-jxw" firstAttribute="width" secondItem="BGD-sd-SQR" secondAttribute="width" id="3Mr-fA-bfF"/>
@@ -178,6 +190,15 @@
             <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="138.40000000000001" y="154.27286356821591"/>
         </view>
+        <webView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLO-lh-MEJ">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="296"/>
+            <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="width" constant="375" id="2Lo-Rg-iCB"/>
+                <constraint firstAttribute="height" constant="296" id="PrQ-nt-H1L"/>
+            </constraints>
+            <point key="canvasLocation" x="878" y="210"/>
+        </webView>
     </objects>
     <resources>
         <image name="cancel" width="20" height="20"/>

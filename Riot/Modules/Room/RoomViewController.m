@@ -16,6 +16,14 @@
  limitations under the License.
  */
 
+#import "WidgetPickerViewController.h"
+
+#import "AppDelegate.h"
+
+#import "WidgetManager.h"
+#import "WidgetViewController.h"
+#import "IntegrationManagerViewController.h"
+
 #import "RoomViewController.h"
 
 #import "RoomDataSource.h"
@@ -415,53 +423,15 @@
     }];
     [self userInterfaceThemeDidChange];
     
-    self.widgetHostView.backgroundColor = [UIColor blueColor];
-    
+    self.widgetHostView.backgroundColor = [UIColor clearColor];
+//    self.widgetHostView.hidden = true;
+    [self.widgetHostView setHidden:true];
+//    [self.widgetHostView setAlpha:0.0f];
+    [self.fullScreenWidgetButton setHidden:true];
     self.widgetViewController = NULL;
-    
-//    MXKRoomDataSourceManager *roomDataSourceManager = [MXKRoomDataSourceManager sharedManagerForMatrixSession:self.roomDataSource.mxSession];
-//    [roomDataSourceManager roomDataSourceForRoom:self.roomDataSource.roomId create:NO onComplete:^(MXKRoomDataSource *roomDataSource) {
-//
-//        NSArray<Widget*> *widgets = [[WidgetManager sharedManager] widgetsNotOfTypes:@[kWidgetTypeJitsi]
-//                                                                              inRoom:roomDataSource.room
-//                                                                       withRoomState:roomDataSource.roomState];
-//
-//        // List widgets
-//        for (Widget *widget in widgets)
-//        {
-//            NSLog(@"[RoomVC] FOUND widget %@", widget);
-//        }
-//    }];
+
     
     Widget *widget = [[WidgetManager sharedManager] userWidgets:self.roomDataSource.mxSession ofTypes:nil].firstObject;
-
-    if (widget)
-    {
-        NSLog(@"[RoomVC] FOUND widget %@", widget);
-//        // Display the widget
-//        [widget widgetUrl:^(NSString * _Nonnull widgetUrl) {
-//
-//            StickerPickerViewController *stickerPickerVC = [[StickerPickerViewController alloc] initWithUrl:widgetUrl forWidget:widget];
-//
-//            stickerPickerVC.roomDataSource = self.roomDataSource;
-//
-//            [self.navigationController pushViewController:stickerPickerVC animated:YES];
-//        } failure:^(NSError * _Nonnull error) {
-//
-//            NSLog(@"[RoomVC] Cannot display widget %@", widget);
-//            [[AppDelegate theDelegate] showErrorAsAlert:error];
-//        }];
-    }
-    
-    
-//    @interface WidgetViewController ()
-//
-//    @end
-//
-//    @implementation WidgetViewController
-//    @synthesize widget;
-//
-//    - (instancetype)initWithUrl:(NSString*)widgetUrl forWidget:(Widget*)theWidget
 }
 
 - (void)userInterfaceThemeDidChange
@@ -3313,11 +3283,13 @@
 
 - (IBAction)onButtonPressed:(id)sender
 {
+    
     // Search button
     if (sender == self.navigationItem.rightBarButtonItem)
     {
         [self performSegueWithIdentifier:@"showRoomSearch" sender:self];
     }
+
     // Matrix Apps button
     else if (self.navigationItem.rightBarButtonItems.count == 2 && sender == self.navigationItem.rightBarButtonItems[1])
     {
@@ -3370,6 +3342,26 @@
         self.jumpToLastUnreadBannerContainer.hidden = YES;
     }
 }
+
+- (IBAction)onButtonPressedFullScreen:(UIButton *)sender {
+    
+    MXKRoomDataSource *roomDataSource = [MXKRoomDataSource new];
+    RoomViewController *mxkViewController = [RoomViewController new];
+    Widget *widget = [Widget new];
+    
+    [widget widgetUrl:^(NSString * _Nonnull widgetUrl) {
+        WidgetViewController *widgetVC = [[WidgetViewController alloc] initWithUrl:widgetUrl forWidget:widget];
+        
+        widgetVC.roomDataSource = roomDataSource;
+        
+        [mxkViewController.navigationController pushViewController:widgetVC animated:YES];
+         }
+         failure:^(NSError * _Nonnull error) {
+             
+             NSLog(@"[WidgetPickerVC] Cannot display widget %@", widget);
+             [[AppDelegate theDelegate] showErrorAsAlert:error];
+         }];
+         }
 
 #pragma mark - UITableViewDelegate
 

@@ -65,23 +65,64 @@
                                                    style:UIAlertActionStyleDefault
                                                  handler:^(UIAlertAction * _Nonnull action)
                            {
+                               
                                // Hide back button title
                                mxkViewController.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
 
+                               
                                // Display the widget
                                [widget widgetUrl:^(NSString * _Nonnull widgetUrl) {
 
                                    WidgetViewController *widgetVC = [[WidgetViewController alloc] initWithUrl:widgetUrl forWidget:widget];
 
                                    widgetVC.roomDataSource = roomDataSource;
+                                   
                                    RoomViewController* roomViewController = (RoomViewController *)mxkViewController;
+                                   
+                                   if (roomViewController.widgetHostView.isHidden) {
+                                       
+                                       [roomViewController.widgetHostView setHidden:false];
+                                           roomViewController.widgetHostView.backgroundColor = [UIColor clearColor];
+                                       //roomViewController.widgetHostView.frame = CGRectMake(1, 60, 400, 300);
+                                       [roomViewController.widgetHostView setUserInteractionEnabled:true];
+                                       [roomViewController.fullScreenWidgetButton setHidden:false];
+                                   }
+                                   
                                    [roomViewController.widgetHostView addSubview:widgetVC.view];
-//                                   [widgetVC presentViewController:add animated:YES completion:nil];
 
 //                                   [mxkViewController.navigationController pushViewController:widgetVC animated:YES];
 
                                } failure:^(NSError * _Nonnull error) {
 
+                                   NSLog(@"[WidgetPickerVC] Cannot display widget %@", widget);
+                                   [[AppDelegate theDelegate] showErrorAsAlert:error];
+                               }];
+                           }];
+            [self.alertController addAction:alertAction];
+        }
+        
+        // Open widget in a new window
+        for (Widget *widget in widgets)
+        {
+            alertAction = [UIAlertAction actionWithTitle:@"Open widget in a new window"
+                                                   style:UIAlertActionStyleDefault
+                                                 handler:^(UIAlertAction * _Nonnull action)
+                           {
+                               
+                               // Hide back button title
+                               mxkViewController.navigationItem.backBarButtonItem =[[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+                               
+                               // Display the widget
+                               [widget widgetUrl:^(NSString * _Nonnull widgetUrl) {
+                                   
+                                   WidgetViewController *widgetVC = [[WidgetViewController alloc] initWithUrl:widgetUrl forWidget:widget];
+                                   
+                                   widgetVC.roomDataSource = roomDataSource;
+                                   
+                                   [mxkViewController.navigationController pushViewController:widgetVC animated:YES];
+                                   
+                               } failure:^(NSError * _Nonnull error) {
+                                   
                                    NSLog(@"[WidgetPickerVC] Cannot display widget %@", widget);
                                    [[AppDelegate theDelegate] showErrorAsAlert:error];
                                }];
