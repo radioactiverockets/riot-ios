@@ -29,6 +29,7 @@
                 <outlet property="roomInputToolbarContainer" destination="nLd-BP-JAE" id="1dp-P1-0js"/>
                 <outlet property="roomInputToolbarContainerBottomConstraint" destination="kQ6-Cg-FMi" id="nHr-fR-XnV"/>
                 <outlet property="roomInputToolbarContainerHeightConstraint" destination="5eD-Fm-RDb" id="6ny-5w-1UA"/>
+                <outlet property="roundedButton" destination="W67-Ve-Stf" id="wC2-F3-1p5"/>
                 <outlet property="view" destination="iN0-l3-epB" id="ieV-u7-rXU"/>
                 <outlet property="widgetHostView" destination="Kg9-lJ-Grl" id="Ci2-Ef-B0o"/>
                 <outlet property="widgetWebView" destination="bLO-lh-MEJ" id="X88-bA-4cX"/>
@@ -154,9 +155,9 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W67-Ve-Stf" userLabel="Full Screen">
-                    <rect key="frame" x="279" y="356" width="96" height="27"/>
+                    <rect key="frame" x="331" y="348" width="44" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Full Screen"/>
+                    <state key="normal" title="Close"/>
                     <connections>
                         <action selector="onButtonPressedFullScreen:" destination="-1" eventType="touchUpInside" id="hHr-OC-M4y"/>
                     </connections>

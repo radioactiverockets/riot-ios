@@ -428,6 +428,11 @@
     [self.widgetHostView setHidden:true];
 //    [self.widgetHostView setAlpha:0.0f];
     [self.fullScreenWidgetButton setHidden:true];
+    self.fullScreenWidgetButton.tintColor = [UIColor greenColor];
+    self.fullScreenWidgetButton.backgroundColor = [UIColor darkGrayColor];
+    _roundedButton.layer.cornerRadius = 4;
+    _widgetHostView.layer.cornerRadius = 8;
+    
     self.widgetViewController = NULL;
 
     
@@ -3345,23 +3350,11 @@
 
 - (IBAction)onButtonPressedFullScreen:(UIButton *)sender {
     
-    MXKRoomDataSource *roomDataSource = [MXKRoomDataSource new];
-    RoomViewController *mxkViewController = [RoomViewController new];
-    Widget *widget = [Widget new];
-    
-    [widget widgetUrl:^(NSString * _Nonnull widgetUrl) {
-        WidgetViewController *widgetVC = [[WidgetViewController alloc] initWithUrl:widgetUrl forWidget:widget];
-        
-        widgetVC.roomDataSource = roomDataSource;
-        
-        [mxkViewController.navigationController pushViewController:widgetVC animated:YES];
-         }
-         failure:^(NSError * _Nonnull error) {
-             
-             NSLog(@"[WidgetPickerVC] Cannot display widget %@", widget);
-             [[AppDelegate theDelegate] showErrorAsAlert:error];
-         }];
-         }
+    [self.widgetHostView setHidden:true];
+    [self.fullScreenWidgetButton setHidden:true];
+    // Update the main screen based on what is showing here.
+//    [self.viewController displaySelectionOnMainScreen];
+}
 
 #pragma mark - UITableViewDelegate
 
